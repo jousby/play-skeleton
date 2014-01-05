@@ -57,8 +57,7 @@ auth mechanism (internal ldap, custom db, flat file).
   
 3. All 3rd party javascript files are in `public/javascripts`, both uncompressed and 
 minified versions. There is a function in `index.scala.html` that switches between uncompressed and 
-minified based on whether play is running in dev or prod mode. (No bower, easy enough for people to add
-if they know how to use it, just trying to keep this is as barebones as possible)
+minified based on whether play is running in dev or prod mode. 
 
 4. Build version information pulled in and displayed in the footer
 

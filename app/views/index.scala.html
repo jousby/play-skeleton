@@ -2,7 +2,7 @@
 
 @minified=@{if(play.Play.isProd()) ".min" else ""}
 
-<html ng-app="project">
+<html ng-app="myApp">
 
     <head>
     
@@ -17,14 +17,14 @@
         
         <!-- Style -->
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap/bootstrap"+ minified + ".css")">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main"+ minified + ".css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/app"+ minified + ".css")">
 
     </head>
   
     <body>
         
         <!-- The wrap  + container + footer divs help implement the fixed navbar + sticky footer layout -->
-        <!-- Checkout assets.stylesheets.layout.less for more details on what is going on here -->
+        <!-- Checkout assets/stylesheets/layout.less for more details on what is going on here -->
         
         <div id="wrap">    
             @navbar()      
@@ -53,7 +53,7 @@
         <![endif]-->
         
         <!-- Application Scripts --> 
-        <script src="@routes.Assets.at("javascripts/project"+ minified + ".js")"></script>
+        <script src="@routes.Assets.at("javascripts/app"+ minified + ".js")"></script>
         
     </body>
     
