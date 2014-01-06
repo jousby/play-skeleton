@@ -13,6 +13,17 @@ object Application extends Controller {
     Ok(views.html.index())
   }
   
+  /**
+   * Returns the JavaScript router that the client can use for "type-safe" routes.
+   * @param varName The name of the global variable, defaults to `jsRoutes`
+   */
+  def jsRoutes(varName: String = "jsRoutes") = Action { implicit request =>
+    Ok(
+      Routes.javascriptRouter(varName)(
+        routes.javascript.Application.login
+      )
+    ).as(JAVASCRIPT)
+  }
   
   def login = Action {
     Ok(views.html.index())

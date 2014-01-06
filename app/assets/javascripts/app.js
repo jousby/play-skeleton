@@ -2,9 +2,16 @@
 
 
 /**
+ * The primary application module 
+ */
+var project = angular.module('myApp', ['myApp.home', 'myApp.login'])
+
+
+
+/**
  * Security Service 
  */
-var securityService = angular.module('myApp.securityService', ['ngRoute'])
+var securityService = angular.module('myApp.securityService', ['ngRoute', 'myApp.playRoutes'])
 
 securityService.factory('UserService', [function() {    
   var user = {
@@ -29,9 +36,12 @@ securityService.constant('RouteAuthorisation', {
   }]
 });
 
-securityService.run(["$rootScope", "$location", function($rootScope, $location) {
+securityService.run(["$rootScope", "$location", 'UserService', function($rootScope, $location, user) {
   $rootScope.$on("$routeChangeError", function(e, next, current) {
-    $location.path("/login");
+    if (user.isLoggedIn) 
+      $location.path("/");
+    else
+      $location.path("/login");
   })
 }]);
 
@@ -91,10 +101,3 @@ login.config(['$routeProvider', '$locationProvider', 'RouteAuthorisation',
 }]);
 
 login.controller('LoginCtrl', ['$scope', 'UserService', function($scope, user) {}]);
-
-
-
-/**
- * The primary application module 
- */
-var project = angular.module('myApp', ['myApp.home', 'myApp.login'])

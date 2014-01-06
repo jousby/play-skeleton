@@ -2,19 +2,23 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home Page
+# Home Page - loads up our single page app
 GET     /                           controllers.Application.index
 
 
-#AJAX
+# REST API
 GET     /v1/login                   controllers.Application.login
+
+
+# JavaScript routes object
+GET     /jsroutes.js                controllers.Application.jsRoutes()
 
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 
-# So it's possible that if not caught above then this is an angular controlled route
+# So it's possible that if not caught above then this is an angular controlled url
 # that has been bookmarked by a user. To load this we need to point them at the index 
 # page and give angular a chance to process it. 
-GET     /*angularRoute             controllers.Application.angularRedirect(angularRoute)
+GET     /*angularRoute              controllers.Application.angularRedirect(angularRoute)
